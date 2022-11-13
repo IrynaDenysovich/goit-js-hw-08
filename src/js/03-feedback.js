@@ -30,11 +30,20 @@ if (formState !== null) {
 
 feedbackForm.addEventListener('submit', submitEvent);
 function submitEvent(event) {
+  
   event.preventDefault();
+
+  for (let element of elements) {
+    if (element.value == '') {
+      element.focus();
+      return;
+    }
+  }
+
   let formElement = event.currentTarget;
   formElement.reset();
   localStorage.removeItem(storageKey);
 
-  console.log(formData); 
-  formData = {}; 
+  console.log(formData);
+  formData = {};
 }
